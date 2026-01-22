@@ -22,7 +22,7 @@ Customer churn prediction is a critical business problem for subscription-based 
 - Improved customer lifetime value
 
 ## Architecture
-![System Architecture](architecture/system-design.png)
+![System Architecture](architecture/sys-design.png)
 
 ## Tech Stack
 
