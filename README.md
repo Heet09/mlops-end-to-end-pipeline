@@ -7,7 +7,7 @@ This project demonstrates a production-style MLOps pipeline covering data ingest
 Predict customer churn probability based on historical customer usage and subscription data.
 
 ## Architecture
-![System Architecture](architecture/system-design.png)
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/e445033a-b0e3-47ad-b44f-6631f23d18b6" />
 
 ## Tech Stack
 - Python
