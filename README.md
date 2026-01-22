@@ -22,22 +22,6 @@ Customer churn prediction is a critical business problem for subscription-based 
 - Improved customer lifetime value
 
 ## Architecture
-
-The system follows a microservices architecture with clear separation of concerns:
-
-```
-Data Ingestion → Model Training → Experiment Tracking → Model Registry → Inference API → Monitoring
-```
-
-### Key Components:
-- **Data Ingestion Service**: Handles data collection, validation, and preprocessing
-- **Training Service**: Automated model training with hyperparameter tuning
-- **MLflow Tracking**: Experiment management and model versioning
-- **FastAPI Inference**: RESTful API for real-time predictions
-- **Docker Containers**: Consistent deployment across environments
-- **Kubernetes Orchestration**: Scalable container management
-- **Terraform Infrastructure**: Infrastructure as code for cloud resources
-
 ![System Architecture](architecture/system-design.png)
 
 ## Tech Stack
