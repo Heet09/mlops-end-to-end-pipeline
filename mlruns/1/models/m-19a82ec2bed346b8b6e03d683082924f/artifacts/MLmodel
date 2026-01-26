@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/Heet Shah/terraform-files/mlops-end-to-end-pipeline/mlruns/1/models/m-19a82ec2bed346b8b6e03d683082924f/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.4
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.3.2
+mlflow_version: 3.8.1
+model_id: m-19a82ec2bed346b8b6e03d683082924f
+model_size_bytes: 838
+model_uuid: m-19a82ec2bed346b8b6e03d683082924f
+prompts: null
+run_id: 14b7e1cb93e9416c81eaaecda55fb121
+utc_time_created: '2026-01-26 05:38:30.538038'

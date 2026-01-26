@@ -120,6 +120,18 @@ The CI/CD pipeline automates the entire ML lifecycle:
 - Container image scanning and vulnerability assessment
 - RBAC for Kubernetes resources
 
+## Kubernetes Deployment
+
+This project includes Kubernetes manifests for deploying the FastAPI ML inference service.
+
+Components:
+- Deployment with multiple replicas for scalability
+- Internal Kubernetes Service for API access
+- Environment-based model configuration
+
+These manifests are designed for cloud-managed Kubernetes platforms such as EKS, GKE, or AKS.
+
+
 ## Scalability & Monitoring
 
 ### Horizontal Scaling
