@@ -131,6 +131,17 @@ Components:
 
 These manifests are designed for cloud-managed Kubernetes platforms such as EKS, GKE, or AKS.
 
+## Terraform Infrastructure Design
+
+This project includes Terraform code to provision cloud infrastructure for deploying the ML inference system.
+
+Infrastructure includes:
+- AWS VPC with public and private subnets
+- Managed EKS cluster for Kubernetes workloads
+- Autoscaling node groups for ML services
+
+The infrastructure is designed following best practices for production-grade MLOps systems.
+
 
 ## Scalability & Monitoring
 
