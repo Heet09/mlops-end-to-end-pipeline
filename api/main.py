@@ -1,42 +1,25 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException
 import joblib
 import os
 
-app = FastAPI(title="Churn Prediction API")
+app = FastAPI(title="ML Inference API with Model Versioning")
 
-MODEL_PATH = "artifacts/churn_model.joblib"
+def load_model(version: str):
+    model_path = os.path.join("models", version, "model.pkl")
 
-class ChurnRequest(BaseModel):
-    tenure: int
-    monthly_charges: float
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model version '{version}' not found")
 
-class ChurnResponse(BaseModel):
-    churn_probability: float
+    return joblib.load(model_path)
 
-@app.get("/")
-def root():
-    return {"message": "Churn Prediction API", "version": "1.0.0", "endpoints": ["/health", "/predict"]}
-
-@app.on_event("startup")
-def load_model():
-    global model
-    if os.path.exists(MODEL_PATH):
-        model = joblib.load(MODEL_PATH)
-    else:
-        model = None
-
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
-
-@app.post("/predict", response_model=ChurnResponse)
-def predict(request: ChurnRequest):
-    if model is None:
-        return {"churn_probability": -1.0}
-
-    prediction = model.predict_proba(
-        [[request.tenure, request.monthly_charges]]
-    )[0][1]
-
-    return {"churn_probability": float(prediction)}
+@app.get("/predict")
+def predict(feature: float, version: str = "latest"):
+    try:
+        model = load_model(version)
+        prediction = model.predict([[feature]])
+        return {
+            "model_version": version,
+            "prediction": prediction.tolist()
+        }
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
